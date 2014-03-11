@@ -1,0 +1,23 @@
+{
+    "name": "promises-a-plus-libraries-benchmarks",
+    "version": "1.0.0",
+    "description": "Promises/A+ libraries benchmarks",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.yandex-team.ru/project-stub/promises-a-plus-libraries-benchmarks.git"
+    },
+    "keywords": [
+        "promises",
+        "benchmark"
+    ],
+    "dependencies": {
+        "matcha": "~0.4.0",
+        "bluebird": "~1.1.0"
+    },
+    "author": "Denis Chistyakov <dench@yandex-team.ru> (https://github.yandex-team.ru/dench)",
+    "license": "ISC"
+}
