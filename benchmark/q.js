@@ -1,13 +1,13 @@
 'use strict';
 
-var bluebird = require('bluebird');
+var Q = require('q');
 
-suite('Bluebird', function() {
+suite('Q', function() {
     set('iterations', 100000);
     set('type', 'static');
 
     bench('then', function(done) {
-        var defer = bluebird.defer();
+        var defer = Q.defer();
 
         defer.promise.then(function() {
             done();
@@ -17,7 +17,7 @@ suite('Bluebird', function() {
     });
 
     bench('reject', function(done) {
-        var defer = bluebird.defer();
+        var defer = Q.defer();
 
         defer.promise.then(function() {
         }, function() {
@@ -28,7 +28,7 @@ suite('Bluebird', function() {
     });
 
     bench('catch', function(done) {
-        var defer = bluebird.defer();
+        var defer = Q.defer();
 
         defer.promise
             .then(function() {
@@ -42,7 +42,7 @@ suite('Bluebird', function() {
     });
 
     bench('then next tick', function(done) {
-        var defer = bluebird.defer();
+        var defer = Q.defer();
 
         defer.promise.then(function() {
             done();
@@ -54,10 +54,10 @@ suite('Bluebird', function() {
     });
 
     bench('all + then', function(done) {
-        var deferA = bluebird.defer(),
-            deferB = bluebird.defer();
+        var deferA = Q.defer(),
+            deferB = Q.defer();
 
-        bluebird.all([deferA.promise, deferB.promise])
+        Q.all([deferA.promise, deferB.promise])
             .then(function(a) {
                 done();
             });
@@ -70,10 +70,10 @@ suite('Bluebird', function() {
     });
 
     bench('all + spread', function(done) {
-        var deferA = bluebird.defer(),
-            deferB = bluebird.defer();
+        var deferA = Q.defer(),
+            deferB = Q.defer();
 
-        bluebird.all([deferA.promise, deferB.promise])
+        Q.all([deferA.promise, deferB.promise])
             .spread(function(a, b) {
                 done();
             });

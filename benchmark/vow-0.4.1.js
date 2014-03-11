@@ -2,7 +2,7 @@
 
 var Vow = require('../libs/vow-0.4.1');
 
-suite('Vow 0.4.1', function () {
+suite('Vow 0.4.1', function() {
     set('iterations', 100000);
     set('type', 'static');
 
@@ -12,6 +12,31 @@ suite('Vow 0.4.1', function () {
         defer.promise().then(function() {
             done();
         });
+
+        defer.resolve('ok');
+    });
+
+    bench('reject', function(done) {
+        var defer = Vow.defer();
+
+        defer.promise().then(function() {
+        }, function() {
+            done();
+        });
+
+        defer.reject('rejected');
+    });
+
+    bench('catch', function(done) {
+        var defer = Vow.defer();
+
+        defer.promise()
+            .then(function() {
+                throw new Error('Catch me if you can');
+            })
+            .catch(function(err) {
+                done(err);
+            });
 
         defer.resolve('ok');
     });
